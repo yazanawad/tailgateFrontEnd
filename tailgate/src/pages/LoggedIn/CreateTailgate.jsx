@@ -4,6 +4,7 @@ export default function CreateTailgate(props) {
   const signOut = () => {
     setLogin(false);
   };
+
   return (
     <>
       <h1>Create Tailgate</h1>
