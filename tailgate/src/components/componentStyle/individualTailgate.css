@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  background-color: ghostwhite;
+  border: 5px solid black;
+  width: 500px;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  border-radius: 20px;
+  margin: auto;
+  margin-bottom: 10px;
+}
