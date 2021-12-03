@@ -7,7 +7,7 @@ export default function CreateTailgate(props) {
 
   return (
     <>
-      <h1>Create Tailgate</h1>
+      <h1>Create Tailgates</h1>
       <input type="button" value="Sign Out" onClick={signOut} />
     </>
   );

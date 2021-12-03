@@ -37,10 +37,10 @@ export default function ViewTailgates(props) {
   };
 
   return (
-    <>
+    <div className="contain">
       <h1>View Tailgates</h1>
       {renderTailgates()}
       <input type="button" value="Sign Out" onClick={signOut} />
-    </>
+    </div>
   );
 }
