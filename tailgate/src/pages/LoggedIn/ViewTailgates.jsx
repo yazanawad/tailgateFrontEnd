@@ -83,7 +83,7 @@ export default function ViewTailgates(props) {
       <h1>View Tailgates</h1>
       <Input
         onChange={(e) => searchVals(e.target.value || null)}
-        placeholder="Basic usage"
+        placeholder="Search Tailgates"
         size="md"
         style={{ width: "400px", margin: "20px" }}
       />

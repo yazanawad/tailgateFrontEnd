@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import SignIn from "./pages/SignIn/SignIn";
 import { useState } from "react";
 import InfoPage from "./pages/InfoPage/InfoPage";
+import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -47,6 +48,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignIn setLogin={setLogin} />} />
+          <Route path="/createAccount" element={<CreateAccount />} />
           <Route path="*" element={<SignIn setLogin={setLogin} />} />
         </Routes>
       </BrowserRouter>
