@@ -1,18 +1,21 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate} from "react-router-dom";
 
 export default function SignIn(props) {
+  let navigate = useNavigate();
   const { setLogin } = props;
   const handleLogin = () => {
     setLogin(true);
   };
   return (
-    <>
-      <h1>Landing Page</h1>
-      <label for="username">Username</label>
-      <input type="text" name="username" id="username" />
-      <label for="username">Password</label>
-      <input type="text" name="password" id="password" />
-      <input type="button" value="Submit" onClick={() => handleLogin()} />
-    </>
+    <div className="contain">
+      <h1>Welcome to the USC Football Tailgaiting Reservation System!</h1>
+      <label for="username">Username</label><br/>
+      <input type="text" name="username" id="username" /><br/>
+      <label for="password">Password</label><br/>
+      <input type="text" name="password" id="password" /><br/>
+      <input type="button" value="Sign In" onClick={() => handleLogin()} /><br/>
+      <input type="button" value="Create Account" onClick={() => navigate("/createAccount")} /><br/>
+      <input type="button" value="Continue as Guest" onClick={() => handleLogin()} />
+    </div>
   );
 }
