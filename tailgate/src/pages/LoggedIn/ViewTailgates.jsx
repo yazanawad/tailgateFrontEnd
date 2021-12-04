@@ -1,7 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import IndividualTailgate from "../../components/individualTailgate";
 import { Input } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+
 export default function ViewTailgates(props) {
+  const navigate = useNavigate();
   const { setLogin } = props;
   const [search, setSearch] = useState([
     {
@@ -19,7 +22,7 @@ export default function ViewTailgates(props) {
       {
         tailgateName: "CASA",
         time: "1pm-3pm",
-        location: "Mccarthy Quad",
+        location: "The Village",
         spots: 3,
         message:
           "Fun tailgate fsakfjhsalkfjklahklsafdkslahjsklafhsldkflsdsfkjsjlksjlk",
@@ -55,6 +58,7 @@ export default function ViewTailgates(props) {
         <div>
           {search.map((tailgate) => (
             <IndividualTailgate
+              navigate={navigate}
               key={tailgate.tailgateName}
               tailgateInfo={tailgate}
             />
@@ -71,7 +75,10 @@ export default function ViewTailgates(props) {
       setSearch(tailgates.current);
     } else {
       const newTailgates = tailgates.current.filter((val) => {
-        if (val.tailgateName.toLowerCase().includes(value.toLowerCase()))
+        if (
+          val.tailgateName.toLowerCase().includes(value.toLowerCase()) ||
+          val.location.toLowerCase().includes(value.toLowerCase())
+        )
           return val;
       });
       setSearch(newTailgates);

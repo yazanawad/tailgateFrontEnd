@@ -13,6 +13,7 @@ import Container from "react-bootstrap/Container";
 import ViewTailgates from "./pages/LoggedIn/ViewTailgates";
 import CreateTailgate from "./pages/LoggedIn/CreateTailgate";
 import ErrorPage from "./pages/ErrorPage";
+import ViewIndividualTailgate from "./pages/LoggedIn/ViewIndividualTailgate";
 function HeaderNav() {
   console.log("CLICKED");
   let navigate = useNavigate();
@@ -69,6 +70,10 @@ function App() {
           <Route
             path="/createTailgates"
             element={<CreateTailgate setLogin={setLogin} />}
+          />
+          <Route
+            path="/viewTailgates/:tailgateName"
+            element={<ViewIndividualTailgate setLogin={setLogin} />}
           />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

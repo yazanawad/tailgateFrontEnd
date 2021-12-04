@@ -2,8 +2,9 @@ import "./componentStyle/individualTailgate.css";
 
 export default function IndividualTailgate(props) {
   const { tailgateName, time, location, spots, message } = props.tailgateInfo;
+  const { navigate } = props;
   return (
-    <div className="wrapper">
+    <div onClick={() => navigate(tailgateName)} className="wrapper">
       <h1>{tailgateName}</h1>
       <h3>
         {location}, {time}
