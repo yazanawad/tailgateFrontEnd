@@ -6,7 +6,7 @@ export default function IndividualTailgate(props) {
   return (
     <div
       onClick={() => {
-        if (navigate) navigate(tailgateName);
+        if (navigate != null) navigate(tailgateName);
       }}
       className="wrapper"
     >
