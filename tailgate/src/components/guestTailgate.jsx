@@ -4,7 +4,7 @@ export default function GuestTailgate(props) {
   const { tailgateName, time, location, spots, message } = props.tailgateInfo;
   const { navigate } = props;
   return (
-    <div onClick={() => navigate(tailgateName)} className="wrapper">
+    <div onClick={() => navigate(tailgateName)} className="box">
       <h3>
         {location}, {time}
       </h3>
