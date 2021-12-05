@@ -12,6 +12,10 @@ export default function SignIn(props) {
     console.log(password.current.value);
     setLogin(true);
   };
+  const handleGuest = (e) => {
+    e.preventDefault();
+    setLogin(true);
+  };
   return (
     <div className="contain">
       <h1>Welcome to the USC Football Tailgaiting Reservation System!</h1>
@@ -21,7 +25,7 @@ export default function SignIn(props) {
       <input ref={password} type="text" name="password" id="password" /><br/>
       <input type="button" value="Sign In" onClick={(e) => handleLogin(e)} /><br/>
       <input type="button" value="Create Account" onClick={() => navigate("/createAccount")} /><br/>
-      <input type="button" value="Continue as Guest" onClick={() => handleLogin()} />
+      <input type="button" value="Continue as Guest" onClick={(e) => handleGuest(e)} />
     </div>
   );
 }
