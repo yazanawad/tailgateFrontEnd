@@ -4,6 +4,9 @@ import { useState } from 'react';
 export default function CreateTailgate(props) {
   const { setLogin } = props;
 
+  const joinTailgate = (event) => {
+  };
+
   const [tailgates, setTailgates] = useState(
     {
       tailgateName: "CASA Tailgate",
@@ -33,6 +36,7 @@ export default function CreateTailgate(props) {
         <h4>{tailgates.message}</h4>
         <IndividualTailgate tailgateInfo={tailgateDetails}></IndividualTailgate>
         {/* Box that Aidan is making */}
+        <input type="button" class="button" value="Join" onClick={(e) => joinTailgate(e)}/>
     </div>
   );
 }
