@@ -14,7 +14,7 @@ export default function SignIn(props) {
   };
   const handleGuest = (e) => {
     e.preventDefault();
-    setLogin(true);
+    navigate("/viewGuestTailgate");
   };
   return (
     <div className="contain">

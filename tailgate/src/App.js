@@ -14,6 +14,7 @@ import ViewTailgates from "./pages/LoggedIn/ViewTailgates";
 import CreateTailgate from "./pages/LoggedIn/CreateTailgate";
 import ErrorPage from "./pages/ErrorPage";
 import ViewIndividualTailgate from "./pages/LoggedIn/ViewIndividualTailgate";
+import ViewGuestTailgate from "./pages/Guest/ViewGuestTailgate";
 function HeaderNav() {
   console.log("CLICKED");
   let navigate = useNavigate();
@@ -50,6 +51,7 @@ function App() {
         <Routes>
           <Route path="/" element={<SignIn setLogin={setLogin} />} />
           <Route path="/createAccount" element={<CreateAccount />} />
+          <Route path="/viewGuestTailgate" element={<ViewGuestTailgate />} />
           <Route path="*" element={<SignIn setLogin={setLogin} />} />
         </Routes>
       </BrowserRouter>
