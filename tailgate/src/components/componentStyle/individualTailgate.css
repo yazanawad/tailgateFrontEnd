@@ -2,11 +2,12 @@
   display: flex;
   background-color: ghostwhite;
   border: 5px solid black;
-  width: 500px;
+  width: 100px;
   flex-direction: column;
   overflow-wrap: break-word;
   border-radius: 20px;
   margin: auto;
   margin-bottom: 10px;
   cursor: pointer;
+  color: "black";
 }

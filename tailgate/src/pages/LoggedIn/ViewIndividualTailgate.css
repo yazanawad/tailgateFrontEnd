@@ -1,15 +1,25 @@
 #parent {
   display: flex;
+  height: 100vh;
   text-align: center;
 }
 #narrow {
   width: 50%;
-  background: lightblue;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  background: #ffc651;
+  /* align-items: center; */
   /* Just so it's visible */
 }
 #wide {
   flex: 1;
+  /* color: white; */
   /* Grow to rest of container */
-  background: lightgreen;
+  background: #a21833;
+
   /* Just so it's visible */
+}
+.white {
+  color: "white";
 }
