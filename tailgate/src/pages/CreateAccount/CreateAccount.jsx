@@ -28,7 +28,11 @@ export default function CreateAccount(props) {
         <label for="name">Name</label><br/>
         <input ref={name} type="text" name="name" id="name" /><br/>
         <label for="designation">Designation</label><br/>
-        <input ref={designation} type="text" name="designation" id="designation" /><br/>
+        <select ref={designation} name="designation" id="designation">
+              <option value="Student">Student</option>
+              <option value="Alumni">Alumni</option>
+              <option value="Faculty">Faculty</option>
+        </select><br/>
         <input type="button" value="Create Account" onClick={(e) => handleCreate(e)}/>
       </div>
     );
