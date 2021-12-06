@@ -15,5 +15,6 @@ code {
 .contain {
   width: 100%;
   text-align: center;
+  padding: 50px;
   /* Add standerdized font */
 }
