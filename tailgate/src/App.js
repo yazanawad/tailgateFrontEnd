@@ -84,7 +84,7 @@ function App() {
             path="/viewAllTailgates/:tailgateName"
             element={<TailgateInfo setLogin={setLogin} />}
           />
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile" element={<ProfilePage setLogin={setLogin}/>} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
