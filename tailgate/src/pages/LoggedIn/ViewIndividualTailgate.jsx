@@ -77,6 +77,10 @@ function ViewIndividualTailgate() {
     setGuests([...newGuests]);
   };
 
+  const handleLeave = (e) => {
+    console.log("No longer attending!");
+  };
+
   const renderNames = () => {
     return (
       <div>
@@ -105,6 +109,7 @@ function ViewIndividualTailgate() {
         />
         <Button variant="primary">Edit</Button>{" "}
         <Button variant="primary">Delete</Button>{" "}
+        <input className="buttonStyle" type="button" value="No Longer Attending" onClick={(e) => handleLeave(e)} /><br/>
       </div>
       <div id="narrow">
         <h1>Guest List</h1>

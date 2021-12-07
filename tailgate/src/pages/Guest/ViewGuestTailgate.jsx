@@ -10,7 +10,7 @@ export default function ViewGuestTailgate(props) {
         location: "Mccarthy Quad",
         spots: 3,
         message:
-          "Fun tailgate fsakfjhsalkfjklahklsafdkslahjsklafhsldkflsdsfkjsjlksjlk",
+          "Fun tailgate",
       });
     let navigate = useNavigate();
     const { setLogin } = props;
