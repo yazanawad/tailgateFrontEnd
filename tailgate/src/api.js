@@ -45,6 +45,48 @@ export const login = async (username, password) => {
       UserPassword: password,
     },
   });
+  console.log(response.data);
+  return response?.data;
+};
 
-  return response?.data.UserExists;
+const getAllTailgates = async () => {
+  const data = await axios({
+    url: `http://127.0.0.1:5000/tailgate/all`,
+    method: "GET",
+    mode: "no-cors",
+  });
+  return await data;
+};
+
+export const createTailgates = async (
+  owner,
+  tailgateName,
+  cap,
+  location,
+  TailgateDescription
+) => {
+  console.log("create tailgates");
+  console.log(owner);
+  console.log(tailgateName);
+  console.log(cap);
+  console.log(location);
+  console.log(TailgateDescription);
+
+  try {
+    const response = await axios({
+      url: `http://127.0.0.1:5000/tailgate`,
+      method: "POST",
+      mode: "no-cors",
+      data: {
+        OwnerUserId: owner,
+        TailgateName: tailgateName,
+        Capacity: cap,
+        Location: location,
+        TailgateDescription: TailgateDescription,
+      },
+    });
+    return true;
+  } catch (e) {
+    return false;
+  }
 };

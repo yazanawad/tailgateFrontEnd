@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //import { useHistory } from "react-router-dom";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import SignIn from "./pages/SignIn/SignIn";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import InfoPage from "./pages/InfoPage/InfoPage";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import Navbar from "react-bootstrap/Navbar";
@@ -46,16 +46,22 @@ function HeaderNav() {
 
 function App() {
   const [login, setLogin] = useState(false);
-  const [userID, setUserID] = useState(false);
+  const userID = useRef(-1);
   // router if user is not loggedIn
   if (!login) {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SignIn setLogin={setLogin} />} />
+          <Route
+            path="/"
+            element={<SignIn userID={userID} setLogin={setLogin} />}
+          />
           <Route path="/createAccount" element={<CreateAccount />} />
           <Route path="/viewGuestTailgate" element={<ViewGuestTailgate />} />
-          <Route path="*" element={<SignIn setLogin={setLogin} />} />
+          <Route
+            path="*"
+            element={<SignIn userID={userID} setLogin={setLogin} />}
+          />
         </Routes>
       </BrowserRouter>
     );
@@ -74,7 +80,7 @@ function App() {
           />
           <Route
             path="/createTailgates"
-            element={<CreateTailgate setLogin={setLogin} />}
+            element={<CreateTailgate userID={userID} setLogin={setLogin} />}
           />
           <Route
             path="/viewTailgates/:tailgateName"
@@ -84,7 +90,10 @@ function App() {
             path="/viewAllTailgates/:tailgateName"
             element={<TailgateInfo setLogin={setLogin} />}
           />
-          <Route path="/profile" element={<ProfilePage setLogin={setLogin}/>} />
+          <Route
+            path="/profile"
+            element={<ProfilePage setLogin={setLogin} />}
+          />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

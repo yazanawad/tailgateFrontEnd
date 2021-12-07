@@ -7,15 +7,16 @@ export default function SignIn(props) {
   const username = useRef(null);
   const password = useRef(null);
   let navigate = useNavigate();
-  const { setLogin } = props;
+  const { setLogin, userID } = props;
   const handleLogin = async (e) => {
     e.preventDefault();
     console.log(username.current.value);
     console.log(password.current.value);
     let isValid = await login(username.current.value, password.current.value);
     console.log("isValid: " + isValid);
-    if (isValid) {
+    if (isValid.UserExists) {
       console.log("loggin in");
+      userID.current = isValid.UserId;
       setLogin(true);
     } else alert("Invalid Login");
   };

@@ -1,8 +1,8 @@
 import "./CreateTailgate.css";
 import { useRef } from "react";
-
+import { createTailgates } from "../../api";
 export default function CreateTailgate(props) {
-  const { setLogin } = props;
+  const { setLogin, userID } = props;
 
   const signOut = () => {
     setLogin(false);
@@ -13,16 +13,24 @@ export default function CreateTailgate(props) {
   const end_time = useRef(null);
   const num_guests = useRef(null);
   const short_desc = useRef(null);
-  const more_info = useRef(null);
-  const handleCreate = (event) => {
+
+  const handleCreate = async (event) => {
     event.preventDefault();
+    const x = await createTailgates(
+      userID.current,
+      tailgate_name.current.value,
+      num_guests.current.value,
+      tailgate_loc.current.value,
+      short_desc.current.value
+    );
+    if (x) console.log("SUCCESS");
+    else console.log("FAILED");
     console.log(tailgate_name.current.value);
     console.log(tailgate_loc.current.value);
     console.log(start_time.current.value);
     console.log(end_time.current.value);
     console.log(num_guests.current.value);
     console.log(short_desc.current.value);
-    console.log(more_info.current.value);
   };
 
   return (
@@ -95,14 +103,6 @@ export default function CreateTailgate(props) {
           style={{ width: 500, height: 175 }}
           name="short_desc"
           id="short_desc"
-        />
-        <h4>More Info</h4>
-        <input
-          ref={more_info}
-          type="text"
-          style={{ width: 500, height: 175 }}
-          name="more_info"
-          id="more_info"
         />
       </div>
       <input
