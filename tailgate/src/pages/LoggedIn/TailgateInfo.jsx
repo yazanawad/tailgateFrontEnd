@@ -19,6 +19,11 @@ export default function TailgateInfo(props) {
     spots: tailgates.spots,
   });
 
+  const handleJoin = (e) => {
+    e.preventDefault();
+    console.log("Button clicked!");
+  };
+
   const signOut = () => {
     setLogin(false);
   };
@@ -29,7 +34,7 @@ export default function TailgateInfo(props) {
       <br></br>
       <h4>{tailgates.message}</h4>
       <IndividualTailgate tailgateInfo={tailgateDetails}></IndividualTailgate>
-      {/* Box that Aidan is making */}
+      <input className="buttonStyle" type="button" value="Join" onClick={(e) => handleJoin(e)} /><br/>
     </div>
   );
 }
