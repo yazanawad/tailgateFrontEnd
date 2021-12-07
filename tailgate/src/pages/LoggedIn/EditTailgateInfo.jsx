@@ -11,7 +11,6 @@ export default function EditTailgate(props) {
         end_time: "3:00pm",
         num_guests: "30",
         short_desc: "Fun tailgate you should come",
-        more_info: "Don't be dumb"
     });
     return (
         <div className="contain" style={{ margin: "auto" }}>
