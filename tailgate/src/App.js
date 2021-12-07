@@ -17,6 +17,7 @@ import ViewIndividualTailgate from "./pages/LoggedIn/ViewIndividualTailgate";
 import ViewGuestTailgate from "./pages/Guest/ViewGuestTailgate";
 import ProfilePage from "./pages/LoggedIn/Profile";
 import TailgateInfo from "./pages/LoggedIn/TailgateInfo";
+import EditTailgate from "./pages/LoggedIn/EditTailgateInfo";
 function HeaderNav() {
   console.log("CLICKED");
   let navigate = useNavigate();

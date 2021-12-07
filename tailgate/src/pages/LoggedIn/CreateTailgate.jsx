@@ -2,18 +2,14 @@ import "./CreateTailgate.css";
 import { useRef } from "react";
 
 export default function CreateTailgate(props) {
-  const { setLogin } = props;
-
-  const signOut = () => {
-    setLogin(false);
-  };
-  const tailgate_name = useRef(null);
-  const tailgate_loc = useRef(null);
-  const start_time = useRef(null);
-  const end_time = useRef(null);
-  const num_guests = useRef(null);
-  const short_desc = useRef(null);
-  const more_info = useRef(null);
+  console.log(props.tailgateInfo)
+  const tailgate_name = useRef(props?.tailgate_name);
+  const tailgate_loc = useRef(props?.tailgate_loc);
+  const start_time = useRef(props?.start_time);
+  const end_time = useRef(props?.end_time);
+  const num_guests = useRef(props?.num_guests);
+  const short_desc = useRef(props?.short_desc);
+  const more_info = useRef(props?.more_info);
   const handleCreate = (event) => {
     event.preventDefault();
     console.log(tailgate_name.current.value);
