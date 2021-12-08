@@ -46,7 +46,7 @@ function HeaderNav() {
 }
 
 function App() {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
   const userID = useRef(-1);
   // router if user is not loggedIn
   if (!login) {

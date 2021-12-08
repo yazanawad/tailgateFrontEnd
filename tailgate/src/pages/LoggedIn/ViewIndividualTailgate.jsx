@@ -3,6 +3,7 @@ import "./ViewIndividualTailgate.css";
 import IndividualTailgate from "../../components/individualTailgate";
 import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom"
 
 function NameTag({ fullName, handleDelete, index }) {
   return (
@@ -44,6 +45,7 @@ function NameTag({ fullName, handleDelete, index }) {
 }
 
 function ViewIndividualTailgate() {
+  let navigate = useNavigate();
   const [guests, setGuests] = useState([
     "Felix Chen",
     "Aidan Chueh",
@@ -77,10 +79,6 @@ function ViewIndividualTailgate() {
     setGuests([...newGuests]);
   };
 
-  const handleLeave = (e) => {
-    console.log("No longer attending!");
-  };
-
   const renderNames = () => {
     return (
       <div>
@@ -107,9 +105,8 @@ function ViewIndividualTailgate() {
           tailgateInfo={{ location: tailgate.location, time: tailgate.time }}
           navigate={() => {}}
         />
-        <Button variant="primary">Edit</Button>{" "}
+        <Button variant="primary" onClick={() => navigate("/EditTailgateInfo")}>Edit</Button>{" "}
         <Button variant="primary">Delete</Button>{" "}
-        <input className="buttonStyle" type="button" value="No Longer Attending" onClick={(e) => handleLeave(e)} /><br/>
       </div>
       <div id="narrow">
         <h1>Guest List</h1>
