@@ -1,10 +1,9 @@
 import "./componentStyle/guestTailgate.css";
 
 export default function GuestTailgate(props) {
-  const { tailgateName, time, location, spots, message } = props.tailgateInfo;
-  const { navigate } = props;
+  const { time, location, spots, message } = props.tailgateInfo;
   return (
-    <div onClick={() => navigate(tailgateName)} className="box">
+    <div className="box">
       <h3>
         {location}, {time}
       </h3>

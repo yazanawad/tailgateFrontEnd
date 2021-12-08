@@ -12,12 +12,6 @@ export default function ViewGuestTailgate(props) {
         message:
           "Fun tailgate",
       });
-    let navigate = useNavigate();
-    const { setLogin } = props;
-    const handleCreate = (e) => {
-      e.preventDefault();
-      navigate("/");
-    };
     
     return (
       <div className="contain">
