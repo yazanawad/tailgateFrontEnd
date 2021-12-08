@@ -1,25 +1,33 @@
 import "./componentStyle/individualTailgate.css";
 
 export default function IndividualTailgate(props) {
-  const { tailgateName, time, location, spots, message } = props.tailgateInfo;
+  const {
+    TailgateName,
+    time,
+    Location,
+    capacity,
+    TailgateDescription,
+    TailgateId,
+  } = props.tailgateInfo;
   const { navigate } = props;
   return (
     <div
       onClick={() => {
-        if (navigate != null) navigate(tailgateName);
+        console.log(TailgateId);
+        if (navigate != null) navigate(`${TailgateId}`);
       }}
       className="wrapper"
     >
-      {tailgateName ? <h1>{tailgateName}</h1> : <></>}
-      {location ? (
+      {TailgateName ? <h1>{TailgateName}</h1> : <></>}
+      {Location ? (
         <h3>
-          {location}, {time}
+          {Location}, {time}
         </h3>
       ) : (
         <></>
       )}
-      {spots != null ? <h3>{spots} spots available!</h3> : <></>}
-      {message ? <h3>{message}</h3> : <></>}
+      {capacity != null ? <h3>{capacity} spots available!</h3> : <></>}
+      {TailgateDescription ? <h3>{TailgateDescription}</h3> : <></>}
     </div>
   );
 }

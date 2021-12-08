@@ -14,6 +14,7 @@ import ViewTailgates from "./pages/LoggedIn/ViewTailgates";
 import CreateTailgate from "./pages/LoggedIn/CreateTailgate";
 import ErrorPage from "./pages/ErrorPage";
 import ViewIndividualTailgate from "./pages/LoggedIn/ViewIndividualTailgate";
+import ViewYourTailgates from "./pages/LoggedIn/ViewYourTailgates";
 import ViewGuestTailgate from "./pages/Guest/ViewGuestTailgate";
 import ProfilePage from "./pages/LoggedIn/Profile";
 import TailgateInfo from "./pages/LoggedIn/TailgateInfo";
@@ -27,7 +28,9 @@ function HeaderNav() {
   return (
     <Navbar bg="light" variant="light">
       <Container>
-        <Navbar.Brand onClick={() => navTo("/")}>Tailgates</Navbar.Brand>
+        <Navbar.Brand onClick={() => navTo("/viewAllTailgates")}>
+          Tailgates
+        </Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link onClick={() => navTo("/viewAllTailgates")}>
             View All Tailgates
@@ -46,7 +49,7 @@ function HeaderNav() {
 }
 
 function App() {
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
   const userID = useRef(-1);
   // router if user is not loggedIn
   if (!login) {
@@ -84,16 +87,22 @@ function App() {
             element={<CreateTailgate userID={userID} setLogin={setLogin} />}
           />
           <Route
-            path="/viewTailgates/:tailgateName"
-            element={<ViewIndividualTailgate setLogin={setLogin} />}
+            path="/viewTailgates/"
+            element={<ViewYourTailgates userID={userID} setLogin={setLogin} />}
+          />
+          <Route
+            path="/viewTailgates/:id"
+            element={
+              <ViewIndividualTailgate userID={userID} setLogin={setLogin} />
+            }
           />
           <Route
             path="/viewAllTailgates/:tailgateName"
-            element={<TailgateInfo setLogin={setLogin} />}
+            element={<TailgateInfo userID={userID} setLogin={setLogin} />}
           />
           <Route
             path="/profile"
-            element={<ProfilePage setLogin={setLogin} />}
+            element={<ProfilePage userID={userID} setLogin={setLogin} />}
           />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

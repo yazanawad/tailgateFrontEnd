@@ -1,16 +1,19 @@
 import "./CreateTailgate.css";
 import IndividualTailgate from "../../components/individualTailgate";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getSingleTailgate, joinTailgate } from "../../api";
 export default function TailgateInfo(props) {
-  const { setLogin } = props;
+  const { setLogin, userID } = props;
+
+  const { tailgateName } = useParams();
 
   const [tailgates, setTailgates] = useState({
     tailgateName: "CASA Tailgate",
     time: "1pm-3pm",
     location: "Mccarthy Quad",
     spots: 3,
-    message: "Fun tailgate",
+    message: "Fun tailgdfsfjdksfkjate",
   });
 
   const [tailgateDetails, setTailgateDetails] = useState({
@@ -19,7 +22,25 @@ export default function TailgateInfo(props) {
     spots: tailgates.spots,
   });
 
-  const handleJoin = (e) => {
+  useEffect(() => {
+    const fun = async () => {
+      const res = await getSingleTailgate(tailgateName);
+      console.log(res);
+
+      setTailgateDetails(res);
+    };
+
+    fun();
+  }, []);
+
+  const handleJoin = async (e) => {
+    alert("Tailgate Joined");
+    try {
+      await joinTailgate(userID.current, tailgateName);
+      console.log("WORKED");
+    } catch (e) {
+      console.log(e);
+    }
     e.preventDefault();
     console.log("Button clicked!");
   };

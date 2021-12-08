@@ -24,13 +24,16 @@ export const postUser = async (fName, username, password, type) => {
 
 export const getUser = async (userID) => {
   const data = await axios({
-    url: `http://127.0.0.1:5000/`,
-    method: "GET",
+    url: `http://127.0.0.1:5000/user/get`,
+    method: "POST",
+    mode: "no-cors",
+
     data: {
-      id: userID,
+      UserId: userID,
     },
   });
-  return await data;
+
+  return data.data;
 };
 
 export const login = async (username, password) => {
@@ -49,13 +52,25 @@ export const login = async (username, password) => {
   return response?.data;
 };
 
-const getAllTailgates = async () => {
-  const data = await axios({
+export const getAllTailgates = async () => {
+  const res = await axios({
     url: `http://127.0.0.1:5000/tailgate/all`,
     method: "GET",
     mode: "no-cors",
   });
-  return await data;
+  return res.data;
+};
+
+export const getUserTailgate = async (userID) => {
+  const res = await axios({
+    url: `http://127.0.0.1:5000/user/tailgates`,
+    method: "POST",
+    data: {
+      OwnerUserId: userID,
+    },
+    mode: "no-cors",
+  });
+  return res.data;
 };
 
 export const createTailgates = async (
@@ -89,4 +104,67 @@ export const createTailgates = async (
   } catch (e) {
     return false;
   }
+};
+
+export const getSingleTailgate = async (tid) => {
+  const res = await axios({
+    url: `http://127.0.0.1:5000/tailgate/get`,
+    method: "POST",
+    mode: "no-cors",
+    data: {
+      TailgateId: tid,
+    },
+  });
+  return res.data;
+};
+
+export const joinTailgate = async (userID, tailgateID) => {
+  const res = await axios({
+    url: `http://127.0.0.1:5000/tailgate/guest`,
+    method: "POST",
+    mode: "no-cors",
+    data: {
+      TailgateId: tailgateID,
+      UserId: userID,
+    },
+  });
+  console.log(res);
+};
+
+export const deleteTailgate = async (tailgateID) => {
+  const res = await axios({
+    url: `http://127.0.0.1:5000/tailgate`,
+    method: "DELETE",
+    data: {
+      TailgateId: tailgateID,
+    },
+    mode: "no-cors",
+  });
+};
+
+export const deleteFromTailgate = async (userID, tailgateID) => {
+  const res = await axios({
+    url: `http://127.0.0.1:5000/tailgate/guest`,
+    method: "DELETE",
+    mode: "no-cors",
+    data: {
+      TailgateId: tailgateID,
+      UserId: userID,
+    },
+  });
+  console.log(res);
+};
+
+export const getAttendees = async (tailgateID) => {
+  const res = await axios({
+    url: `http://127.0.0.1:5000/tailgate/attendees`,
+    method: "POST",
+    mode: "no-cors",
+    data: {
+      TailgateId: tailgateID,
+    },
+  });
+  console.log("GETTING ATTENDEES");
+  console.log(res.data);
+  return res.data;
 };

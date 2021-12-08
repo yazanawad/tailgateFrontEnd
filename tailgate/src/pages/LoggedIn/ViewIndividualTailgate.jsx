@@ -3,6 +3,13 @@ import "./ViewIndividualTailgate.css";
 import IndividualTailgate from "../../components/individualTailgate";
 import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  getSingleTailgate,
+  getAttendees,
+  deleteTailgate,
+  deleteFromTailgate,
+} from "../../api";
 
 function NameTag({ fullName, handleDelete, index }) {
   return (
@@ -44,52 +51,48 @@ function NameTag({ fullName, handleDelete, index }) {
 }
 
 function ViewIndividualTailgate() {
-  const [guests, setGuests] = useState([
-    "Felix Chen",
-    "Aidan Chueh",
-    "Yazan Awad",
-    "Jake Kandell",
-  ]);
-  const [tailgate, setTailgate] = useState({
-    tailgateName: "CASA",
-    time: "1pm-3pm",
-    location: "Mccarthy Quad",
-    spots: 3,
-    message:
-      "Fun tailgate fsakfjhsalkfjklahklsafdkslahjsklafhsldkflsdsfkjsjlksjlk",
-  });
+  const { id } = useParams();
+  let navigate = useNavigate();
+  const [guests, setGuests] = useState([]);
+  const [tailgate, setTailgate] = useState({});
   useEffect(() => {
-    // setTailgate({
-    //   tailgateName: "New",
-    //   time: "1pm-3pm",
-    //   location: "Mccarthy Quad",
-    //   spots: 3,
-    //   message:
-    //     "Fun tailgate fsakfjhsalkfjklahklsafdkslahjsklafhsldkflsdsfkjsjlksjlk",
-    // });
+    const f = async () => {
+      const res = await getSingleTailgate(id);
+      const attendees = await getAttendees(id);
+
+      setGuests(attendees);
+      setTailgate(res);
+      console.log(res);
+    };
+    f();
   }, []);
-  const handleDelete = (index) => {
+  const handleDelete = async (obj, index) => {
+    console.log("DEK");
     console.log(index);
+    console.log(obj.UserId);
+    console.log(id);
     const newGuests = guests;
 
+    await deleteFromTailgate(obj.UserId, id);
     newGuests.splice(index, 1);
     console.log(newGuests);
     setGuests([...newGuests]);
   };
-
-  const handleLeave = (e) => {
-    console.log("No longer attending!");
+  const buttonDelete = async () => {
+    alert("Tailgate Deleted");
+    await deleteTailgate(id);
+    navigate("/ViewAllTailgates");
   };
-
   const renderNames = () => {
+    console.log("guests");
     return (
       <div>
-        {guests.map((name, index) => (
+        {guests.map((g, index) => (
           <>
             <NameTag
-              key={name}
-              fullName={name}
-              handleDelete={handleDelete}
+              key={g.UserId}
+              fullName={g.FirstName}
+              handleDelete={() => handleDelete(g, index)}
               index={index}
             />
             <br></br>
@@ -101,15 +104,17 @@ function ViewIndividualTailgate() {
   return (
     <div id="parent">
       <div id="wide">
-        <h2 className="white">{tailgate.tailgateName}</h2>
-        <h4 color="white">{tailgate.message}</h4>
         <IndividualTailgate
-          tailgateInfo={{ location: tailgate.location, time: tailgate.time }}
+          // tailgateInfo={{ location: tailgate?.Location, time: "1:30" }}
+          tailgateInfo={tailgate}
           navigate={() => {}}
         />
-        <Button variant="primary">Edit</Button>{" "}
-        <Button variant="primary">Delete</Button>{" "}
-        <input className="buttonStyle" type="button" value="No Longer Attending" onClick={(e) => handleLeave(e)} /><br/>
+        <Button variant="primary" onClick={() => navigate("/EditTailgateInfo")}>
+          Edit
+        </Button>{" "}
+        <Button variant="primary" onClick={() => buttonDelete()}>
+          Delete
+        </Button>{" "}
       </div>
       <div id="narrow">
         <h1>Guest List</h1>

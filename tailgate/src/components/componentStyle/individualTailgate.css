@@ -2,7 +2,7 @@
   display: flex;
   background-color: ghostwhite;
   border: 5px solid black;
-  width: 100px;
+  width: 500px;
   flex-direction: column;
   overflow-wrap: break-word;
   border-radius: 20px;

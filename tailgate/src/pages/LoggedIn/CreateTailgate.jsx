@@ -1,5 +1,6 @@
 import "./CreateTailgate.css";
-import { useRef, useNavigate } from "react";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { createTailgates } from "../../api";
 export default function CreateTailgate(props) {
   const { setLogin, userID } = props;
@@ -23,7 +24,6 @@ export default function CreateTailgate(props) {
       num_guests.current.value,
       tailgate_loc.current.value,
       short_desc.current.value
-
     );
     if (x) console.log("SUCCESS");
     else console.log("FAILED");

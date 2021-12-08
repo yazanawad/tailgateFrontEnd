@@ -2,16 +2,16 @@ import { useEffect, useState, useRef } from "react";
 import IndividualTailgate from "../../components/individualTailgate";
 import { Input } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { getAllTailgates } from "../../api";
-export default function ViewTailgates(props) {
+import { getUserTailgate } from "../../api";
+export default function ViewYourTailgates(props) {
   const navigate = useNavigate();
-  const { setLogin } = props;
+  const { setLogin, userID } = props;
   const [search, setSearch] = useState([]);
   const tailgates = useRef();
   useEffect(() => {
     console.log("IN RIGHT PAGE");
     const getTG = async () => {
-      const data = await getAllTailgates();
+      const data = await getUserTailgate(userID.current);
       console.log(data.length);
       tailgates.current = data;
       console.log(tailgates.current);
