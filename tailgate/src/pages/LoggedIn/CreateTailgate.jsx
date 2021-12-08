@@ -1,5 +1,5 @@
 import "./CreateTailgate.css";
-import { useRef } from "react";
+import { useRef, useNavigate } from "react";
 import { createTailgates } from "../../api";
 export default function CreateTailgate(props) {
   const { setLogin, userID } = props;
@@ -13,6 +13,7 @@ export default function CreateTailgate(props) {
   const end_time = useRef(null);
   const num_guests = useRef(null);
   const short_desc = useRef(null);
+  let navigate = useNavigate();
 
   const handleCreate = async (event) => {
     event.preventDefault();
@@ -22,6 +23,7 @@ export default function CreateTailgate(props) {
       num_guests.current.value,
       tailgate_loc.current.value,
       short_desc.current.value
+
     );
     if (x) console.log("SUCCESS");
     else console.log("FAILED");
@@ -31,6 +33,7 @@ export default function CreateTailgate(props) {
     console.log(end_time.current.value);
     console.log(num_guests.current.value);
     console.log(short_desc.current.value);
+    navigate("/viewTailgates");
   };
 
   return (
@@ -56,7 +59,7 @@ export default function CreateTailgate(props) {
           id="tailgate_loc"
         >
           {/* <option value="" selected disabled hidden>Available Locations</option>  */}
-          <option value="temp_loc1">temp_loc1</option>
+          <option value="Leavey">Leavey</option>
           <option value="temp_loc2">temp_loc2</option>
           <option value="temp_loc3">temp_loc3</option>
           <option value="temp_loc4">temp_loc4</option>
@@ -71,7 +74,7 @@ export default function CreateTailgate(props) {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <h4>Tailgate Start Time</h4>
             <select ref={start_time} name="start_time" id="start_time">
-              <option value="stime1">10:00am</option>
+              <option value="10:00am">10:00am</option>
               <option value="stime2">temp_time</option>
               <option value="stime3">temp_time</option>
               <option value="stime4">temp_time</option>
@@ -80,7 +83,7 @@ export default function CreateTailgate(props) {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <h4>Tailgate End Time</h4>
             <select ref={end_time} name="end_time" id="end_time">
-              <option value="etime1">3:00pm</option>
+              <option value="3:00pm">3:00pm</option>
               <option value="etime2">temp_time</option>
               <option value="etime3">temp_time</option>
               <option value="etime4">temp_time</option>
