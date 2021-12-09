@@ -33,7 +33,7 @@ export default function SignIn(props) {
       <br />
       <label for="password">Password</label>
       <br />
-      <input ref={password} type="text" name="password" id="password" />
+      <input ref={password} type="password" name="password" id="password" />
       <br />
       <input
         className="buttonStyle"

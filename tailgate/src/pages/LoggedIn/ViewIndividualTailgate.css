@@ -14,6 +14,7 @@
 }
 #wide {
   flex: 1;
+  padding: 20px;
   /* color: white; */
   /* Grow to rest of container */
   background: #a21833;

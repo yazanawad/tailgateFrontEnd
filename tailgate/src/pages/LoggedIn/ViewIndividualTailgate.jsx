@@ -109,7 +109,14 @@ function ViewIndividualTailgate() {
           tailgateInfo={tailgate}
           navigate={() => {}}
         />
-        <Button variant="primary" onClick={() => navigate("/EditTailgateInfo")}>
+        <Button
+          variant="primary"
+          onClick={() =>
+            navigate(`/EditTailgateInfo/${id}`, {
+              state: { test: "PATH PARAMS" },
+            })
+          }
+        >
           Edit
         </Button>{" "}
         <Button variant="primary" onClick={() => buttonDelete()}>

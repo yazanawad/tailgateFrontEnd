@@ -77,7 +77,7 @@ function App() {
       <BrowserRouter>
         <HeaderNav />
         <Routes>
-          <Route path="/" element={<InfoPage setLogin={setLogin} />} />
+          <Route path="/" element={<ViewTailgates setLogin={setLogin} />} />
           <Route
             path="/viewAllTailgates"
             element={<ViewTailgates setLogin={setLogin} />}
@@ -89,6 +89,10 @@ function App() {
           <Route
             path="/viewTailgates/"
             element={<ViewYourTailgates userID={userID} setLogin={setLogin} />}
+          />
+          <Route
+            path="/EditTailgateInfo/:id"
+            element={<EditTailgate userID={userID} setLogin={setLogin} />}
           />
           <Route
             path="/viewTailgates/:id"

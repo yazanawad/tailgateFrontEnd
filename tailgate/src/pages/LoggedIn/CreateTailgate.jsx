@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { createTailgates } from "../../api";
 export default function CreateTailgate(props) {
-  const { setLogin, userID } = props;
+  const { setLogin, userID, tailgateInfo } = props;
 
   const signOut = () => {
     setLogin(false);
@@ -18,6 +18,7 @@ export default function CreateTailgate(props) {
 
   const handleCreate = async (event) => {
     event.preventDefault();
+    console.log(tailgate_name.current.value);
     const x = await createTailgates(
       userID.current,
       tailgate_name.current.value,
@@ -60,9 +61,9 @@ export default function CreateTailgate(props) {
         >
           {/* <option value="" selected disabled hidden>Available Locations</option>  */}
           <option value="Leavey">Leavey</option>
-          <option value="temp_loc2">temp_loc2</option>
-          <option value="temp_loc3">temp_loc3</option>
-          <option value="temp_loc4">temp_loc4</option>
+          <option value="Mccarthy">temp_loc2</option>
+          <option value="The Village">temp_loc3</option>
+          <option value="Tommy Trojan">temp_loc4</option>
         </select>
         <div
           style={{
@@ -74,19 +75,19 @@ export default function CreateTailgate(props) {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <h4>Tailgate Start Time</h4>
             <select ref={start_time} name="start_time" id="start_time">
-              <option value="10:00am">10:00am</option>
-              <option value="stime2">temp_time</option>
-              <option value="stime3">temp_time</option>
-              <option value="stime4">temp_time</option>
+              <option value="8:00am">10:00am</option>
+              <option value="9:00am">temp_time</option>
+              <option value="10:00am">temp_time</option>
+              <option value="11:00am">temp_time</option>
             </select>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <h4>Tailgate End Time</h4>
             <select ref={end_time} name="end_time" id="end_time">
               <option value="3:00pm">3:00pm</option>
-              <option value="etime2">temp_time</option>
-              <option value="etime3">temp_time</option>
-              <option value="etime4">temp_time</option>
+              <option value="2:00pm">temp_time</option>
+              <option value="1:00pm">temp_time</option>
+              <option value="12:00pm">temp_time</option>
             </select>
           </div>
         </div>

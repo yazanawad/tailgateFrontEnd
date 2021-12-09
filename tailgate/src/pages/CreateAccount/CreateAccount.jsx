@@ -36,7 +36,7 @@ export default function CreateAccount(props) {
       <br />
       <label for="password">Password</label>
       <br />
-      <input ref={password} type="text" name="password" id="password" />
+      <input ref={password} type="password" name="password" id="password" />
       <br />
       <label for="name">Name</label>
       <br />
